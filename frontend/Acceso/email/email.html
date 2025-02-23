@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperación de Contraseña</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            /* Quitar el subrayado */
+        }
+
+        .ii a[href] {
+            color: inherit;
+            /* Hereda el color del elemento contenedor */
+            text-decoration: none;
+            /* Elimina el subrayado, si lo deseas */
+        }
+
+        a:hover {
+            color: #ffffff;
+
+            text-decoration: none;
+            /* Mantener sin subrayado en hover */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1A233A;
+            color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #1d2e59;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #f4f4f4;
+            padding: 20px;
+            background-color: #1d2e59;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #1d2e59;
+            color: #ffffff !important; /*NO ME QUEDO DE OTRA SINO EL COLOR DE LA LETRA DEL BOTON ES AZUL*/
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 2px solid #1d2e59;
+        }
+
+        .button:hover {
+            background-color: rgb(44, 69, 134);
+        }
+
+        #botonEnviar {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Estilos específicos para móviles */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            .button {
+                padding: 12px 30px;
+            }
+
+            .footer {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h3>Recupera el acceso a tu cuenta de MyGamesList</h3>
+        </div>
+
+        <div class="content">
+            <!-- Información clave al principio para evitar los tres puntos -->
+            <p><strong>Hemos recibido una solicitud para restablecer la contraseña de tu cuenta. Si no fuiste tú quien
+                    realizó esta solicitud, por favor ignora este correo.</strong></p>
+            <p>Si deseas restablecer tu contraseña, haz clic en el siguiente botón:</p>
+            <div id="botonEnviar">
+                <a href="http://localhost:5500/Acceso/recover/recuperarCuenta.html?token=TOKEN_UNICO_AQUI"
+                    class="button">Restablecer contraseña</a>
+            </div>
+
+            <p>Este enlace será válido durante 1 hora. Si no lo usas dentro de ese tiempo, tendrás que solicitar un
+                nuevo enlace.</p>
+        </div>
+
+        <div class="footer">
+            <p>Si no solicitaste este cambio, puedes ignorar este correo. Si tienes algún problema, por favor contacta
+                con nuestro soporte.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

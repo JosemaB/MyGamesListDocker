@@ -1,0 +1,28 @@
+@media (min-width: 771px) {
+    body {
+        background-image: url('/img/acceso/registerFondo.jpg');
+    }
+}
+@media (max-width: 771px) {
+    body {
+        background-image: url('/img/acceso/registerMovil.png');
+    }
+}
+
+.card {
+    background-color: #191a1de0;
+}
+#miFormulario .btn {
+    background-color: #9f2c17;
+}
+
+#miFormulario .btn:hover {
+    background-color: hsl(9, 71%, 23%);;
+}
+a {
+    color: #4883a3;
+}
+
+a:hover {
+    color: #376780;
+}

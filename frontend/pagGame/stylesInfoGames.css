@@ -1,0 +1,305 @@
+/* Media Query para pantallas de escritorio (mayores a 1024px) */
+@media (min-width: 992px) {
+    .carruselPersonalizadoDJuego .carousel-inner {
+        height: 400px;
+        width: 700px;
+    }
+
+    .carruselPersonalizadoDJuego .carousel-inner .carousel-item {
+        height: 100%;
+        width: 100%;
+    }
+
+    .carruselPersonalizadoDJuego .carousel-inner .carousel-item img {
+        height: 100%;
+        width: 100%;
+    }
+
+    .carruselPersonalizadoDJuego .carousel-indicators {
+        max-height: 76px;
+    }
+
+    .carruselPersonalizadoDJuego .carousel-indicators img {
+        height: 100%;
+        max-height: 56px;
+        max-width: 100px;
+    }
+}
+
+/* Media Query para tabletas y móviles grandes (entre 768px y 1024px) */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .carruselPersonalizadoDJuego .carousel-inner {
+        max-height: 241px;
+        max-width: 320px;
+    }
+}
+
+/* Media Query para móviles pequeños (menos de 768px) */
+@media (max-width: 767px) {
+    .carruselPersonalizadoDJuego .carousel-inner {
+        max-height: 241px;
+        max-width: 320px;
+    }
+
+    .imgPrincipal {
+        max-height: 300px;
+    }
+}
+
+.carruselPersonalizadoDJuego .carousel-item img {
+    object-fit: cover;
+}
+
+.row>* {
+    /*Quitamos el padin y margin por decto de bostrap*/
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 0;
+}
+
+.card {
+    border: 0;
+    background: none;
+}
+
+.imgPrincipal {
+    background-size: cover;
+    /* Escala la imagen para cubrir todo el div */
+    background-position: center;
+    /* Centra la imagen en el div */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se repita */
+    height: 600px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.valoracionesMain {
+    background-color: #1A233A;
+    border-radius: 10px;
+    padding: 10px;
+    /* Espaciado interno */
+    margin: 10px;
+    position: absolute;
+    /* Posiciona el elemento dentro del contenedor */
+    bottom: 10px;
+    /* Alineado a 20px del borde inferior */
+    left: 0%;
+    /* Coloca horizontalmente en el centro del contenedor */
+    opacity: 80%;
+}
+
+.modalMain {
+    border-radius: 10px;
+    padding: 10px;
+    /* Espaciado interno */
+    margin: 10px;
+    position: absolute;
+    /* Posiciona el elemento dentro del contenedor */
+    bottom: 0;
+    /* Mueve el div al fondo */
+    right: 0;
+    /* Mueve el div a la derecha */
+}
+
+.modalMain button {
+    background-color: #1A233A;
+    border: none;
+    opacity: 80%;
+    font-size: 18px
+}
+
+.modalMain button:hover,
+.valoracionesMain:hover {
+    opacity: 1;
+    background-color: #1A233A;
+}
+
+.tituloDelJuego {
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    /* Texto blanco */
+    font-weight: bold;
+    /* Hacer el texto más grueso para destacar */
+    text-transform: uppercase;
+    /* Opcional: poner el texto en mayúsculas */
+
+    /* Añadir un contorno alrededor del texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
+    /* Fondo de color oscuro para el contorno */
+    padding: 10px 20px;
+    /* Espaciado interno para que el texto no esté pegado al borde */
+    background-color: #1d2e59;
+    /* Fondo negro con algo de transparencia */
+    border-radius: 15px;
+    /* Bordes redondeados */
+
+    /* Agregar un borde de color negro */
+    border: 2px solid black;
+
+    /* Opcional: agregar un leve efecto de sombra */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    text-wrap: balance;
+}
+
+/*Lista pantallas perqueñas*/
+#tabDropdown {
+    background: #1d2e59;
+    color: white;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="white"><path d="M10 12l5-5H5l5 5z"/></svg>');
+    /* URL de la flecha */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    /* Ajusta la flecha a la derecha */
+}
+
+#tabDropdown option {
+    background: #15213f;
+}
+
+#tabDropdown:focus {
+    box-shadow: none;
+}
+
+
+#myTabContent #info h1,
+#myTabContent #info h2,
+#myTabContent #info h3,
+#myTabContent #info h4,
+#myTabContent #info h5 {
+    font-size: 24px;
+    /* Título grande */
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #e6e1e1;
+    /* Destaca el título con color dorado */
+    text-align: center;
+    /* Centrado */
+    border-radius: 20px;
+    border: 1px solid;
+    padding: 5px;
+}
+
+#myTabContent #info {
+    margin: 50px;
+
+}
+
+#info #DescripcionJuego p {
+    text-align: justify;
+    text-align: left;
+}
+
+/*Lista De Detalles del Juego*/
+#myTab .nav-link {
+    color: white;
+}
+
+#myTabContent {
+    background-color: #1A233A;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+}
+
+#myTab button {
+    background-color: #1A233A;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#myTab button.active {
+    background-color: #2c376e;
+    /* Color de fondo del botón activo */
+}
+
+#carouselExampleIndicators {
+    /* Amplía el espacio hacia abajo */
+    padding: 20px 0 90px 0;
+}
+
+#carouselExampleIndicators .carousel-inner {
+    border-radius: 10px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-size: 50%;
+    background-position: center;
+}
+
+#carouselExampleIndicators .custom-control-prev {
+    width: 100px;
+    /* Ancho personalizado */
+    height: auto;
+    /* Mantén la proporción */
+}
+
+/*Reseñas*/
+.mensajePersonalizado,
+.escribir-resena {
+    background-color: #1a2950;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #e6e1e1;
+    width: 1000px;
+    text-align: justify;
+    border-radius: 20px;
+}
+
+.escribir-resena button {
+    background-color: #2c376e;
+    border-color: none;
+    color: #e6e1e1;
+}
+
+.escribir-resena button:hover {
+    background-color: #1A233A;
+    color: #e6e1e1;
+}
+
+.perfil-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+/*Requisitos minimos*/
+.parrafoRequisitos {
+    text-align: justify;
+    font-size: 15px;
+    padding: 25px;
+}
+
+
+/*Modal*/
+.modal-content {
+    background-color: #1A233A;
+}
+
+/*Boton de inciar sesion*/
+.btnIniciarSesion:disabled {
+    background-color: #1A233A;
+    border: 1px solid white;
+}
+
+.btnIniciarSesion,
+.btnAnadir,
+#submitReview {
+    background-color: #1d2e59;
+    color: white;
+    border: 1px solid white;
+}
+
+.btnIniciarSesion:hover,
+.btnAnadir:hover,
+#submitReview:hover {
+    background-color: #131e3b;
+    color: white;
+    border: 1px solid white;
+}

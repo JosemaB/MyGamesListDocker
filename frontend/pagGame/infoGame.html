@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Importar CSS desde node_modules -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="./stylesInfoGames.css">
+
+    <!-- Importar JS desde node_modules -->
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="./gameScript.js"></script>
+    <script type="module" src="../js/app.js"></script>
+
+    <title>Game Info</title>
+</head>
+
+<body>
+    <header class="sticky-top mb-3">
+        <nav class="contentNav navbar navbar-expand-xl">
+            <div class="container-fluid ">
+                <a href="/index.html"
+                    class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                    <img class="logo" src="/img/logo.png" alt="LOGO">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="bi bi-justify text-light"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div id="headerMoviles">
+                        </div>
+                        <ul class="fw-bold nav col-12 col-xl-auto me-xl-auto mb-2 justify-content-center mb-xl-0">
+                            <li><a href="/paginasBuscadores/pc/pc.html"
+                                    class="nav-link px-2 text-white d-flex align-items-center">
+                                    <img class="icon p-2" src="/img/Plataformas/PC.png" alt="PC">
+                                    PC
+                                </a>
+                            </li>
+                            <li><a href="/paginasBuscadores/sony/sony.html"
+                                    class="nav-link px-2 text-white d-flex align-items-center">
+                                    <img class="icon p-2" src="/img/Plataformas/sony.png" alt="PC">
+                                    PlayStation
+                                </a>
+                            </li>
+                            <li><a href="/paginasBuscadores/xbox/xbox.html"
+                                    class="nav-link px-2 text-white d-flex align-items-center">
+                                    <img class="icon p-2" src="/img/Plataformas/xbox.png" alt="PC">
+                                    Xbox
+                                </a>
+                            </li>
+                            <li><a href="/paginasBuscadores/nintendo/nintendo.html"
+                                    class="nav-link px-2 text-white d-flex align-items-center">
+                                    <img class="icon p-2" src="/img/Plataformas/nintendo.png" alt="PC">
+                                    Nintendo
+                                </a>
+                            </li>
+                        </ul>
+                        <!--Poner iconos form-->
+                        <form id="form" class="col-12 col-xl-auto mb-3 me-xl-2 mb-xl-0 d-flex align-items-center"
+                            role="search">
+                            <div class="input-group">
+                                <input type="search" id="searchInput" class="custom-search form-control"
+                                    placeholder="Buscar..." aria-label="Search">
+                                <button type="submit" class="btnForm btn">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                            <div id="resultadosForm"></div>
+                        </form>
+                        <div class="d-flex align-items-center justify-content-center" id="headerEscritorio">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="mainContent">
+            <div class="container"><!--Para los errores-->
+                <div class="row" id="juegoNoEncontrado"></div>
+            </div>
+            <div class=" container" id="contenidoTotal">
+                <div class="row" id="visuales">
+
+                </div>
+
+                <div class="row mt-5" id="contenidoNav" style="display: none;">
+                    <!-- Navegación de pestañas -->
+                    <ul class="nav d-none d-md-flex" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info"
+                                type="button" role="tab" aria-controls="info" aria-selected="true">DESCRIPCIÓN</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="screenshots-tab" data-bs-toggle="tab"
+                                data-bs-target="#screenshots" type="button" role="tab" aria-controls="screenshots"
+                                aria-selected="false">CAPTURAS DE PANTALLA</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
+                                type="button" role="tab" aria-controls="reviews" aria-selected="false">RESEÑAS</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="required-tab" data-bs-toggle="tab" data-bs-target="#required"
+                                type="button" role="tab" aria-controls="required"
+                                aria-selected="false">REQUISITOS</button>
+                        </li>
+                    </ul>
+                    <!-- Menú desplegable para pantallas pequeñas -->
+                    <select class="form-select d-md-none fw-bold text-center" id="tabDropdown">
+                        <option value="info" selected>DESCRIPCIÓN</option>
+                        <option value="screenshots">CAPTURAS DE PANTALLA</option>
+                        <option value="reviews">RESEÑAS</option>
+                        <option value="required">REQUISITOS</option>
+                    </select>
+                    <!-- Contenido de las pestañas -->
+                    <!-- Contenido de las pestañas dentro de myTabContent -->
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+
+                        </div>
+                        <div class="tab-pane fade d-flex justify-content-center" id="screenshots" role="tabpanel"
+                            aria-labelledby="screenshots-tab">
+
+                        </div>
+                        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+
+                        </div>
+                        <div class="tab-pane fade" id="required" role="tabpanel" aria-labelledby="required-tab">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Modal de confirmación Resena -->
+    <div class="modal fade" id="confirmDeleteResenaModal" tabindex="-1" aria-labelledby="confirmDeleteResenaModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteResenaModalLabel">Confirmar eliminación</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    ¿Estás seguro de que deseas eliminar esta reseña?
+                </div>
+                <div class="modal-footer">
+                    <div class="col-12 m-0 mt-2 p-0 text-center" id="alertaResena"></div>
+                    <div class="col-12 m-0 mt-2 p-0 text-center" id="alertaConfirmResenaDelete"></div>
+                    <div class="col-12 m-0 mt-2 p-0 text-center" id="alertasDeleteResena"></div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteResenaButton">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal rewiews-->
+    <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" id="contenidoModalReviews">
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal Contenido De Clases-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 fw-bold" id="staticBackdropLabel">Añadir a tu lista</h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div id="contenidoModal">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footerGame" class="footerPrincipal text-center text-lg-start text-white mt-5">
+
+
+        <!-- Section: Social media -->
+        <section class="foooterSE d-flex justify-content-between p-4">
+            <!-- Left -->
+            <div class="me-5">
+                <span>¡Conéctate conmigo!:</span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div>
+                <a href="https://github.com/JosemaB" class="text-white me-4 text-decoration-none">
+                    <i class="bi bi-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/jose-manuel-illana-benavides-8177a8267/"
+                    class="text-white me-4 text-decoration-none">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+
+        <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3 d-flex align-items-start justify-content-between">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold">MyGameList</h6>
+                    <hr class="tamanoFuente mb-4 mt-0 d-inline-block mx-auto" />
+                    <p>
+                        <strong>Rating:</strong>
+                    </p>
+                    <!-- Star Rating -->
+                    <div class="star-rating">
+                        <span class="star filled">&#9733;</span>
+                        <span class="star filled">&#9733;</span>
+                        <span class="star filled">&#9733;</span>
+                        <span class="star filled">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p>
+                        
+Calificación 4/5 en GameReview.com. ¡Los usuarios adoran nuestra selección de juegos!
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Languages & Tools</h6>
+                    <hr class="tamanoFuente mb-4 mt-0 d-inline-block mx-auto" />
+                    <p class="text-white">
+                        JavaScript
+                    </p>
+                    <p class="text-white">
+                        Bootstrap
+                    </p>
+                    <p class="text-white">
+                        CSS
+                    </p>
+                    <p class="text-white">
+                        HTML
+                    </p>
+                </div>
+
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Project Inspirations</h6>
+                    <hr class="tamanoFuente mb-4 mt-0 d-inline-block mx-auto" />
+                    <p>
+                        <a href="https://www.instant-gaming.com/es/" class="text-white">Instant Gaming</a>
+                    </p>
+                    <p>
+                        <a href="https://www.cdkeys.com/es_es/" class="text-white">Cdkeys</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Contact</h6>
+                    <hr class="tamanoFuente mb-4 mt-0 d-inline-block mx-auto" />
+                    <p><i class="fas fa-envelope mr-3"></i> jmabenavides25@gmail.com</p>
+                    <p><i class="fas fa-home mr-3"></i> Almeria, ES</p>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center p-3 foooterSE">
+            © 2025:
+            <a class="text-white" href="">MyGamesList</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    <div id="toast-container" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050;"></div>
+</body>
+
+</html>

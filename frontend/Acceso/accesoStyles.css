@@ -1,0 +1,84 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* Evita el scroll */
+}
+
+/* Estilos para el header */
+header {
+    height: 60px;
+    /* Ajusta la altura del header según lo que necesites */
+}
+
+/* Centrar el main en el espacio restante */
+main {
+    height: calc(100vh - 200px);
+    /* Resta la altura del header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    /* Imagen de fondo */
+    background-size: cover;
+    /* Ajusta la imagen para cubrir todo el área */
+    background-position: center;
+    /* Centra la imagen */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se repita */
+}
+
+.contentNav {
+    background-color: none;
+}
+
+.logo {
+    opacity: 80%;
+}
+
+.card {
+    height: auto;
+    width: 420px;
+    padding: 0;
+    background-color: #1A233A;
+    padding: 0;
+    /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Sombra suave */
+    color: white;
+}
+
+#miFormulario .btn {
+    background-color: #2c376e;
+    color: aliceblue;
+}
+
+#miFormulario .btn:hover {
+    background-color: #121829;
+}
+
+/*Para el login de google*/
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: gray;
+    margin: 10px 0;
+}
+
+.separator::before,
+.separator::after {
+    content: "";
+    flex: 1;
+    border-top: 1px solid gray;
+    margin: 0 10px;
+}
+
+/*Para el focus*/
+input.error {
+    border: 2px solid rgb(139, 33, 33);
+}

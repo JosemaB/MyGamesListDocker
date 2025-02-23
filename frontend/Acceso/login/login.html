@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Importar CSS desde node_modules -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Importar JS desde node_modules -->
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <!--Login google-->
+    <script src="https://accounts.google.com/gsi/client" async></script>
+
+    <!--Mis archivos-->
+    <link href="/Acceso/accesoStyles.css" rel="stylesheet">
+    <link href="../../styles.css" rel="stylesheet">
+    <link href="loginEstilos.css" rel="stylesheet">
+    <script type="module" src="login.js" defer></script>
+    <title>Login</title>
+</head>
+
+<body>
+    <header>
+        <nav class="contentNav navbar bg-transparent">
+            <div class="container-fluid justify-content-between">
+                <a href="/index.html"
+                    class="d-flex align-items-center mb-2 mb-0 link-body-emphasis text-decoration-none">
+                    <img class="logo" src="/img/logo.png" alt="LOGO">
+                </a>
+                <button id="btnClose" type="button" class="btn-close me-3 btn-close-white" aria-label="Close"></button>
+            </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="justify-content-center d-flex"> <!-- Ajusta el ancho -->
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="miFormulario">
+                                <div class="mb-3">
+                                    <label for="email" class="fw-bold form-label">Correo electrónico</label>
+                                    <input placeholder="Ingresa tu correo electrónico" autocomplete="email" type="email"
+                                        class="form-control" id="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="fw-bold form-label">Contraseña</label>
+                                    <input placeholder="***********" autocomplete="current-password" type="password"
+                                        class="form-control" id="password">
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="fw-bold form-check-input" id="checkbox">
+                                    <div class="d-flex justify-content-between">
+                                        <label class="form-check-label">Mostrar contraseña</label>
+                                        <a class=" text-decoration-none" href="#" title="Crear cuenta"
+                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                            ¿Olvidaste tu contraseña?</a>
+                                    </div>
+                                </div>
+                                <button type="submit" id="btnIniciatSesion" name="enviar" class="fw-bold col-12 btn">Iniciar sesión</button>
+                                <div class="col-12 m-0 mt-2 p-0 text-center" id="alertas"></div>
+
+                                <div class="separator">o</div>
+                                <!-- Botón de inicio de sesión Google -->
+                                <div class="mb-3 d-flex justify-content-center d-relative">
+                                    <div id="g_id_onload"></div> <!-- Aquí no necesitamos usar data-callback -->
+                                    <div class="m3 g_id_signin" data-type="standard" data-size="large" data-width="300">
+                                    </div>
+                                </div>
+
+                                <div class="mt-3 text-center">
+                                    <p class="m-0 fw-bold">¿Estás empezando a usar MyGamesList?</p>
+                                    <a class="fw-bold text-decoration-none" href="../register/register.html"
+                                        title="Crear cuenta">Unirse ahora</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="resultado mt-3"></div>
+                    <!-- Modal -->
+                    <div class="modal fade d-relative" id="staticBackdrop" data-bs-backdrop="static"
+                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="fw-bold modal-title fs-5 text-center" id="staticBackdropLabel">
+                                        Recuperación
+                                        de Contraseña</h1>
+                                    <button type="button" id="closeBtn" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="formModal">
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Correo electrónico</label>
+                                            <input placeholder="Ingresa tu correo electrónico" autocomplete="email"
+                                                type="email" class="form-control" id="emailModal">
+                                        </div>
+                                        <button type="submit" name="enviar" class="fw-bold col-12 btn" id="btnRecuperar">Recuperar
+                                            contraseña</button>
+                                        <div class="col-12 m-0 mt-2 p-0 text-center" id="alertasModal"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

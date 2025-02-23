@@ -1,0 +1,677 @@
+@media (min-width: 992px) {
+  #form {
+    width: 350px;
+  }
+
+  #resultadosForm .card-title {
+    font-size: 20px;
+
+  }
+
+  .logo {
+    width: 80px;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  /*Para el dropdown-menu sino no me funciona*/
+  .dropdown-menu[data-bs-popper] {
+    top: 100%;
+    right: 0;
+    left: inherit;
+  }
+
+  #resultadosForm {
+    top: 53px !important;
+  }
+}
+
+@media (max-width: 1199px) {
+  .dropdown-menu[data-bs-popper] {
+    left: 26%;
+  }
+
+  #form {
+    margin: auto;
+  }
+}
+
+/* Media Query para tabletas y móviles grandes (entre 768px y 1024px) */
+@media (max-width: 1023px) and (min-width: 768px) {
+  #resultadosForm .card-title {
+    font-size: 20px;
+
+  }
+
+  .logo {
+    width: 80px;
+  }
+}
+
+/* Media Query para móviles pequeños (menos de 768px) */
+@media (max-width: 768px) {
+  .imgForm {
+    object-fit: cover;
+  }
+
+  #resultadosForm .card-title {
+    font-size: 15px;
+
+  }
+
+  .logo {
+    width: 60px;
+  }
+}
+
+/*Pantalla de carga*/
+.load .yoshi {
+  width: auto;
+  max-height: 250px;
+}
+
+.loading {
+  font-size: 24px;
+  /* Tamaño del texto */
+  font-weight: bold;
+  color: #E3E8FF;
+  animation: blink 2s infinite;
+  /* Duración de 2 segundos, animación infinita */
+}
+
+.load .titulo {
+  height: auto;
+  width: 70%;
+}
+
+/* Definición de la animación de parpadeo */
+/* Definición de la animación de parpadeo */
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+    /* Totalmente visible al inicio y al final */
+  }
+
+  50% {
+    opacity: 0;
+    /* Invisible a mitad de la animación */
+  }
+}
+
+.ocultarContenido {
+  display: none;
+}
+
+
+/* Aplica la fuente Oswald a todo el contenido */
+body {
+  font-family: 'Oswald', sans-serif;
+  background-color: #121829;
+  color: #E3E8FF;
+}
+
+
+/*header*/
+.contentNav,
+.offcanvas {
+  background-color: #1A233A;
+  color: white;
+}
+
+.dropdown-menu {
+  background-color: #1A233A;
+  color: white;
+  /* Fondo de la tarjeta */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* Sombra suave */
+
+}
+
+/*Usuario sin conexion logo*/
+.usuarioNoConectado:hover {
+  color: #007bff;
+}
+
+.dropdown-menu .dropdown-item {
+  padding: 10px;
+  /* Espaciado interno */
+  color: white;
+  /* Color del texto */
+  transition: background-color 0.3s ease;
+  /* Transición suave */
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #2A3B5F;
+  /* Color de fondo al pasar el mouse */
+}
+
+.dropdown-menu .dropdown-item:focus {
+  background-color: #374A73;
+  /* Color de fondo al seleccionar */
+  outline: none;
+  /* Eliminar el contorno predeterminado */
+}
+
+
+/*Boton Perfil*/
+.dropdown-item {
+  color: white;
+  background-color: #1A233A;
+}
+
+.nav-link {
+  border: 2px solid transparent;
+  /* Sin borde visible inicialmente */
+  padding: 10px;
+  /* Relleno alrededor del texto */
+  display: inline-block;
+  /* Hace que el enlace tenga un área de clic más amplia */
+  transition: border-radius 0.3s ease, border 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+  /* Transiciones suaves */
+}
+
+.nav-link:hover {
+  border: 2px solid white;
+  /* Aparece el borde blanco cuando se pasa el mouse */
+  border-radius: 12px;
+  /* Bordes redondeados */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+/*Search*/
+#form {
+  position: relative;
+  max-width: 350px;
+}
+
+/*BTN BUSCADOR*/
+.btnForm {
+  background-color: #2A3B5F;
+  color: #E3E8FF;
+
+}
+
+.btnForm:hover {
+  border-color: white;
+  color: #E3E8FF;
+}
+
+.form-control:focus {
+  border-color: #1A233A;
+  /* Cambia el color del borde */
+  box-shadow: 0 0 0 0.10rem #374A73;
+  /* Cambia el color de la sombra */
+  outline: none;
+  /* Opcional: elimina el contorno predeterminado */
+}
+
+/*Contenido oculto para buscar el juego*/
+#resultadosForm {
+  position: absolute;
+  width: 100%;
+  top: 38px;
+  left: 0;
+  z-index: 1000;
+  background-color: #1A233A;
+}
+
+#resultadosForm a.text-decoration-none:hover .card {
+  background-color: #121829;
+  /* Cambia el fondo al pasar el ratón */
+  transition: background-color 0.3s ease;
+  /* Animación suave */
+  cursor: pointer;
+  /* Cambia el cursor a una mano */
+}
+
+#resultadosForm .card {
+  background-color: #1A233A;
+  /* Cambia el cursor a una mano */
+  border-radius: 0;
+  padding: 0;
+  color: white;
+  border: 1px solid #ffffff70;
+}
+
+#resultadosForm .card-body {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+
+#resultadosForm .icon {
+  max-height: 30px;
+  max-width: 30px;
+}
+
+.imgForm {
+  max-height: 90px;
+  max-width: 150px;
+}
+
+.imgForm img {
+  height: 100%;
+  width: 100%;
+}
+
+#resultadosForm a.text-decoration-none:hover .card-title {
+  color: #007bff;
+  /* Cambia el color del título al pasar el ratón */
+  transition: color 0.3s ease;
+  /* Animación suave para el título */
+
+}
+
+#resultadosForm button {
+  border-radius: 0;
+  width: 100%;
+  color: white;
+  background-color: #2f3a57;
+}
+
+#resultadosForm button:hover {
+  background-color: #121829;
+  color: white;
+}
+
+
+
+/*Botones*/
+.icon-button {
+  background: none;
+  /* Sin fondo */
+  border: 2px solid transparent;
+  /* Sin borde visible inicialmente */
+  padding: 0;
+  /* Sin relleno */
+  cursor: pointer;
+  /* Cambia el cursor al estilo de botón */
+  transition: border-radius 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+  /* Transiciones suaves */
+
+  align-items: center;
+  /* Alinea el icono verticalmente */
+  justify-content: center;
+  /* Alinea el icono horizontalmente */
+}
+
+.icon-button i {
+  font-size: 1.5rem;
+  /* Tamaño del icono */
+  color: white;
+  /* Color del icono */
+  transition: color 0.3s ease;
+  /* Transición suave para el color */
+}
+
+.icon-button:hover {
+  border-color: white;
+  /* Aparece el borde blanco cuando se pasa el mouse */
+  border-radius: 12px;
+  /* Bordes redondeados */
+
+}
+
+.icon-button:hover i {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+  /* Efecto de brillo */
+}
+
+/* Carrusel: Limitar tamaño */
+#catalogoPrincipal .carousel-inner,
+#catalogoPrincipal .carousel-inner img,
+#catalogoPrincipal .carousel-inner .carousel-item {
+  height: 100%;
+  /*No me quedaba de otra para poner el carousel al 100% el alto. El carousel es calentarte la cabeza a mas no poder*/
+}
+
+.carousel-item img {
+  width: 100%;
+  /* Hace que las imágenes ocupen todo el ancho del contenedor */
+  height: auto;
+  /* Mantiene la relación de aspecto */
+  object-fit: cover;
+  /* Ajusta el recorte de la imagen al contenedor */
+}
+
+/*Lista Desplegable*/
+/* Hacer el select más pequeño */
+#dropdownSelect {
+
+  width: 242px;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #fff;
+  text-align: left;
+  /* Alinea el texto a la izquierda */
+  background-color: hsla(0, 0%, 100%, .07);
+  /* Fondo de la tarjeta */
+  border-color: hsla(0, 0%, 100%, .07);
+  /* Quitar estilos predeterminados para personalizar */
+  position: relative;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="white"><path d="M10 12l5-5H5l5 5z"/></svg>');
+  /* Agregar una flecha personalizada */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  /* Posicionar la flecha */
+  /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* Sombra suave */
+}
+
+
+
+/* Hacer las opciones más pequeñas */
+#dropdownSelect option {
+  background-color: hsla(0, 0%, 100%, .07);
+  font-size: 12px;
+  border-color: #1A233A;
+  /* Reduce el tamaño de la fuente de las opciones */
+
+
+  /* Reduce el espacio interno de cada opción */
+}
+
+
+/* Estilo cuando el select tiene foco */
+#dropdownSelect:focus {
+  background-color: #1A233A;
+  border-color: none;
+  /* Color del borde cuando está enfocado */
+}
+
+/*Lista juegos*/
+/*Cards Games*/
+
+#containerCard .card {
+  max-width: 300px;
+  margin: 5px;
+  background-color: #1A233A;
+  /* Fondo de la tarjeta */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* Sombra suave */
+  color: white;
+  padding: 0;
+}
+
+#containerCard .card:hover {
+  background-color: transparent;
+}
+
+/* Tarjetas compactas */
+.contentMCards {
+  align-items: center;
+  justify-content: center;
+  /* Ajusta el valor para redondear más o menos */
+}
+
+.contentMCards .card-text {
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  overflow: hidden;
+}
+
+.custom-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Suaviza la animación */
+}
+
+.custom-card:hover {
+  transform: scale(1.05);
+  /* Aumenta el tamaño ligeramente */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  /* Mejora la sombra */
+}
+
+
+.card-title {
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  overflow: hidden;
+}
+
+
+/*Para titulos con borde de color*/
+.text-uniform span {
+  font-size: 0.8rem;
+  /* Ajusta el tamaño de la fuente a un valor común */
+  line-height: 1.5;
+  /* Mantén una buena separación vertical */
+}
+
+.bordeNegro {
+  text-shadow: 1px 0px 0px black, 0px 1px 0px black, -1px 0px 0px black, 0px -1px 0px black;
+  font-family: verdana;
+}
+
+.card-img {
+  object-fit: cover;
+  object-position: top;
+  opacity: 0.9;
+  height: 80px;
+  width: 100%;
+  /* Asegura que las imágenes llenen el contenedor */
+}
+
+.card-img-overlay {
+  font-size: 12px;
+  /* Tamaño más pequeño para el texto */
+}
+
+
+/*Ajustamos la imagen del Juego*/
+.custom-img-size img {
+  width: 100%;
+  /* La imagen ocupa el 100% del contenedor */
+  height: 170px;
+  /* Establece una altura fija para todas las imágenes */
+  object-fit: cover;
+  /* Recorta la imagen para que cubra el área sin distorsionarse */
+}
+
+/*Para las flechas del carrusel*/
+.zindex-0 .carousel-control-prev-icon,
+.zindex-0 .carousel-control-next-icon {
+  background-color: black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.zindex-0 .carousel-control-prev,
+.zindex-0 .carousel-control-next {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+}
+
+
+/* Ocultar el contenido adicional inicialmente */
+.extra-content {
+  opacity: 0;
+  max-height: 0;
+  display: none;
+}
+
+.hover-card:hover .card-title {
+  text-overflow: unset;
+  white-space: normal;
+  overflow: visible;
+
+}
+
+/* Mostrar el contenido adicional al hacer hover */
+.hover-card:hover .extra-content {
+  opacity: 1;
+  max-height: 200px;
+  background-color: #1A233A;
+  z-index: 1;
+  border-radius: 8px;
+  display: block;
+
+}
+
+.list-group-item {
+  /* Alinea el texto a la izquierda */
+  background-color: #ffffff;
+  color: #1A233A;
+}
+
+
+.letraPequena {
+  font-size: 15px;
+}
+
+.icon {
+  width: 43px;
+  /* Tamaño final del ícono */
+  height: 43px;
+  image-rendering: crisp-edges;
+  /* Para bordes nítidos */
+}
+
+.hover-card:hover {
+  transform: scale(1.1);
+  /* Aumenta el tamaño */
+  z-index: 1;
+  transition: transform 0.3s ease-in;
+  background-color: transparent;
+}
+
+.hover-card:hover .containerCardTest {
+  position: absolute;
+  width: 100%;
+  background-color: #1A233A;
+  /* Fondo de la tarjeta */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* Sombra suave */
+
+}
+
+.hover-card {
+  position: relative;
+}
+
+.zindex-0 {
+  z-index: 0;
+}
+
+
+/*Footer*/
+.star-rating .star {
+  color: #ccc;
+  font-size: 24px;
+}
+
+.star-rating .filled {
+  color: #FFD700;
+}
+
+.footerPrincipal {
+  background-color: #1A233A;
+}
+
+.foooterSE {
+  background-color: #121c34;
+}
+
+.tamanoFuente {
+  width: 60px;
+  height: 2px;
+}
+
+/*Sin resultados*/
+#sinResultado .sinResultadoPersonalizado {
+  max-width: 700px;
+  border-radius: 12px;
+  background-color: #1d2e59;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  /* Color de fondo blanco */
+  border: 2px solid black;
+  color: #e6e1e1;
+  /* Borde ligero */
+}
+
+/*Media query pantallas mas peruqeñas*/
+/* Media query para pantallas más pequeñas */
+
+
+/*Contenido adicional*/
+/*Spinner*/
+.spinner {
+  margin: 100px auto 0;
+  width: 70px;
+  text-align: center;
+}
+
+.spinner>div {
+  width: 18px;
+  height: 18px;
+  background-color: #ffffff;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+/*Para el focus*/
+input.error,
+textarea.error {
+  border: 2px solid rgb(139, 33, 33);
+}
+
+@-webkit-keyframes sk-bouncedelay {
+
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0)
+  }
+
+  40% {
+    -webkit-transform: scale(1.0)
+  }
+}
+
+@keyframes sk-bouncedelay {
+
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  40% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}

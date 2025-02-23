@@ -1,0 +1,41 @@
+@media (min-width: 771px) {
+    body {
+        background-image: url('/img/acceso/fondoLogin.webp');
+    }
+}
+
+@media (max-width: 771px) {
+    body {
+        background-image: url('/img/acceso/loginMovil.jpg');
+    }
+}
+
+a {
+    color: #5a75f1;
+}
+
+a:hover {
+    color: #4e63c9;
+}
+/*Para el modal de recuperar contrasena*/
+.modal-content{
+    background-color: #1A233A;
+
+}
+#formModal button{
+    background-color: #2c376e;
+    color: aliceblue;
+
+}
+#formModal button:hover{
+    background-color: #121829;
+}
+.custom-modal-container .modal-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.modal.show .modal-dialog {
+    transform: translate(0,-50px);
+}

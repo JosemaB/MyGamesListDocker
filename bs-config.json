@@ -1,0 +1,12 @@
+{
+  "port": 5500,
+  "server": {
+    "baseDir": [
+      "./frontend",
+      "./node_modules"
+    ],
+    "routes": {
+      "/node_modules": "node_modules"
+    }
+  }
+}

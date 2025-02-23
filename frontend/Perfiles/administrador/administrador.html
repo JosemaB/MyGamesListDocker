@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+
+    <!-- Importar CSS desde node_modules -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="./administrador.css">
+
+    <!-- Importar JS desde node_modules -->
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="../../js/app.js"></script>
+    <!-- Scripts para Chart.js (Grafico)-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" async></script>
+    <script type="module" src="administrador.js" defer></script>
+</head>
+
+<body>
+    <header></header>
+    <main style="display: none;">
+        <div id="contenidoNav"></div>
+        <!-- Menú para pantallas grandes -->
+        <div class="d-none d-md-block">
+            <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white">
+                <div class="d-flex align-items-center align-items-center flex-column">
+                    <a href="/index.html"
+                        class="d-flex align-items-center mb-0 link-body-emphasis text-decoration-none">
+                        <img class="logo" src="/img/logo.png" alt="LOGO">
+                    </a>
+                    <span class="fw-bold">Panel de control</span>
+                </div>
+                <hr>
+                <nav class="mb-auto">
+                    <div class="nav nav-tabs flex-column mb-1 d-flex justify-content-center align-items-center"
+                        id="nav-tab" role="tablist">
+                        <button class="col-12 nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                            aria-selected="true">Home</button>
+                        <button class="col-12 nav-link text-center" id="nav-usuarios-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-usuarios" type="button" role="tab" aria-controls="nav-usuarios"
+                            aria-selected="false">Usuarios</button>
+                        <button class="col-12 nav-link" id="nav-listas-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-listas" type="button" role="tab" aria-controls="nav-listas"
+                            aria-selected="false">Listas</button>
+                        <button class="col-12 nav-link" id="nav-resenas-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-resenas" type="button" role="tab" aria-controls="nav-resenas"
+                            aria-selected="false">Reseñas</button>
+                    </div>
+                </nav>
+                <div class="dropdown d-block">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="avatarEscriorio" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <strong class="nombreEscritorio" id="nombreEscritorio">nombre</strong>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="../../Perfiles/perfil/perfil.html">Perfil</a></li>
+                        <li><button class="dropdown-item" id="cerrarSesionEscritorio">Cerrar sesión</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú para móviles -->
+        <div class="d-block d-md-none">
+            <header class="d-block d-md-none movilesHeader d-flex justify-content-between align-items-center p-3">
+                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar"
+                    aria-controls="offcanvasSidebar">☰</button>
+                <a href="/index.html" class="d-flex align-items-center mb-0 link-body-emphasis text-decoration-none">
+                    <img class="logo" src="/img/logo.png" alt="LOGO">
+                </a>
+            </header>
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasSidebarLabel">Panel de control</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body d-flex flex-column">
+                    <nav class="mb-auto">
+                        <div class="nav nav-tabs flex-column mb-1 d-flex justify-content-center align-items-center"
+                            id="nav-tab-mobile" role="tablist">
+                            <button class="col-12 nav-link active" id="nav-home-tab-mobile" data-bs-toggle="tab"
+                                data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                aria-selected="true">Home</button>
+                            <button class="col-12 nav-link text-center" id="nav-usuarios-tab-mobile"
+                                data-bs-toggle="tab" data-bs-target="#nav-usuarios" type="button" role="tab"
+                                aria-controls="nav-usuarios" aria-selected="false">Usuarios</button>
+                            <button class="col-12 nav-link" id="nav-listas-tab-mobile" data-bs-toggle="tab"
+                                data-bs-target="#nav-listas" type="button" role="tab" aria-controls="nav-listas"
+                                aria-selected="false">Listas</button>
+                            <button class="col-12 nav-link" id="nav-resenas-tab-mobile" data-bs-toggle="tab"
+                                data-bs-target="#nav-resenas" type="button" role="tab" aria-controls="nav-resenas"
+                                aria-selected="false">Reseñas</button>
+                        </div>
+                    </nav>
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img alt="" width="32" height="32" class="rounded-circle me-2" id="avatarMovil">
+                            <strong class="nombreAvatar" id="nombreMovil">nombre</strong>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                            <li><a class="dropdown-item" href="../../Perfiles/perfil/perfil.html">Perfil</a></li>
+                            <li><button class="dropdown-item" id="cerrarSesionMovil">Cerrar sesión</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido principal que se ajusta a la derecha de la barra lateral -->
+        <div class="main-content">
+            <!-- Aquí irían los contenidos de las pestañas correspondientes -->
+            <div class="tab-content" id="nav-tabContent">
+                <!-- Home Content -->
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="container-fluid">
+                        <div class="row g-0 w-100 justify-content-center">
+                            <div class="col-12 text-center mb-3">
+                                <h2 class="fw-bold" id="nombreAdministrador"></h2>
+                                <img class="avatar" id="avatarAdministrador" alt="Avatar administrador">
+                            </div>
+                            <!-- Gráfico de Barras -->
+                            <div class="col-12 px-md-5">
+                                <div class="card h-100" id="barChartCard">
+                                    <div class="card-header tituloGeneral text-center fw-bold">
+                                        Informe Global de Actividad
+                                    </div>
+                                    <div class="card-body p-0 d-flex">
+                                        <canvas id="barChart" class="w-100 h-100"></canvas>
+                                        <!-- Canvas ocupará todo el tamaño del card -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dashboard Content -->
+                <div class="tab-pane fade" id="nav-usuarios" role="tabpanel" aria-labelledby="nav-usuarios-tab">
+                    <nav class="navbar d-flex justify-content-center align-items-center">
+                        <div class="container-fluid flex-nowrap" id="formUsuarios">
+                            <h3 class="navbar-brand fw-bold text-light m-0 mx-2">Usuarios</h3>
+                            <form class="d-flex" role="search" id="formBuscarUsuario">
+                                <div class="input-group">
+                                    <input type="search" class=" form-control" placeholder="Buscar usuario..."
+                                        aria-label="Search" id="inputBuscarUsuario">
+                                    <button type="button" class="btn-outline-light btn">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="row w-100 mt-1" id="totalUsuariosResultado">
+
+                        </div>
+
+                    </nav>
+                </div>
+
+                <!-- Orders Content -->
+                <div class="tab-pane fade" id="nav-listas" role="tabpanel" aria-labelledby="nav-listas-tab">
+                    <nav class="navbar d-flex justify-content-center align-items-center">
+                        <div class="container-fluid flex-nowrap" id="formListas">
+                            <h3 class="navbar-brand fw-bold text-light m-0 mx-2">Listas</h3>
+                            <form class="d-flex" role="search" id="formBuscarListas">
+                                <div class="input-group">
+                                    <input type="search" class=" form-control" placeholder="Buscar usuario..."
+                                        aria-label="Search" id="inputBuscarListas">
+                                    <button type="button" class="btn-outline-light btn">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="row w-100 mt-1" id="totalListasResultado">
+
+                        </div>
+
+                    </nav>
+                </div>
+
+                <!-- Products Content -->
+                <div class="tab-pane fade" id="nav-resenas" role="tabpanel" aria-labelledby="nav-resenas-tab">
+                    <nav class="navbar d-flex justify-content-center align-items-center">
+                        <div class="container-fluid flex-nowrap" id="formResenas">
+                            <h3 class="navbar-brand fw-bold text-light m-0 mx-2">Reseñas</h3>
+                            <form class="d-flex" role="search" id="formBuscarResenas">
+                                <div class="input-group">
+                                    <input type="search" class=" form-control" placeholder="Buscar usuario..."
+                                        aria-label="Search" id="inputBuscarResenas">
+                                    <button type="button" class="btn-outline-light btn">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="row w-100 mt-1" id="totalResenasResultado">
+
+                        </div>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="toast-container" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050;"></div>
+    <!-- Modal de confirmación de eliminacion de usuario -->
+    <div class="modal fade" id="deleteUsuarioModal" tabindex="-1" aria-labelledby="deleteUsuarioModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteUsuarioModalLabel">Eliminar seguimiento</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    ¿Seguro que quieres elimianr a este usuario?
+                </div>
+                <div class="modal-footer">
+                    <div class="col-12 m-0 mt-2 p-0 text-center" id="alertaDeleteUsuario"></div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="eliminarUsuarioBTN">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para renombrar usuario -->
+    <div class="modal fade" id="renameUsuarioModal" tabindex="-1" aria-labelledby="renameUsuarioModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="renameUsuarioModalLabel">Renombrar Usuario</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body fw-bold ">
+                    <label for="newUsuarioName" class="mb-2">Nuevo nombre de usuario:</label>
+                    <input type="text" id="newUsuarioName" class="form-control" placeholder="Introduce el nuevo nombre"
+                        required>
+                    <div class="col-12 m-0 mt-2 p-0 text-center" id="alertasRenameUsuario"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmRenameUsuarioButton">Renombrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal de confirmación de subir rango -->
+    <div class="modal fade" id="subirRangoModal" tabindex="-1" aria-labelledby="subirRangoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="subirRangoModalLabel">Confirmar subir rango</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    ¿Seguro que quieres subir de rango a esta usuario?
+                </div>
+                <div class="modal-footer">
+                    <div class="col-12 m-0 mt-2 p-0 text-center" id="alertaConfirmSubirUsuario"></div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" id="confirmarSubirUsuarioBTN">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal de confirmación de bajar rango -->
+    <div class="modal fade" id="bajarRangoModal" tabindex="-1" aria-labelledby="bajarRangoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bajarRangoModalLabel">Confirmar bajar rango</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    ¿Seguro que quieres bajar de rango a esta usuario?
+                </div>
+                <div class="modal-footer">
+                    <div class="col-12 m-0 mt-2 p-0 text-center" id="alertaConfirmBajarUsuario"></div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmarBajarUsuarioBTN">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para renombrar la lista -->
+    <div class="modal fade" id="renameListaModal" tabindex="-1" aria-labelledby="renameListaModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="renameListaModalLabel">Renombrar lista</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body fw-bold ">
+                    <label for="newListName" class="mb-2">Nuevo nombre de la lista:</label>
+                    <input type="text" id="newListName" class="form-control" placeholder="Introduce el nuevo nombre"
+                        required>
+                    <div class="col-12 m-0 mt-2 p-0 text-center" id="alertasRenameLista"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmRenameButton">Renombrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal de confirmación eliminacion lista -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmModalLabel">Confirmar acción</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    ¿Estás seguro de que deseas eliminar esta lista?
+                </div>
+                <div class="modal-footer">
+                    <div class="col-12 m-0 mt-2 p-0 text-center" id="alertasDeleteLista"></div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal de eliminar Resena -->
+    <div class="modal fade" id="confirmDeleteResenaModal" tabindex="-1" aria-labelledby="confirmDeleteResenaModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteResenaModalLabel">Confirmar eliminación</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    ¿Estás seguro de que deseas eliminar esta reseña?
+                </div>
+                <div class="modal-footer">
+                    <div class="col-12 m-0 mt-2 p-0 text-center" id="alertaResena"></div>
+                    <div class="col-12 m-0 mt-2 p-0 text-center" id="alertaConfirmResenaDelete"></div>
+                    <div class="col-12 m-0 mt-2 p-0 text-center" id="alertasDeleteResena"></div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteResenaButton">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal de lista de juegos -->
+    <div class="modal fade" id="listJuegos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="tituloListaModal" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content h-100">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 fw-bold" id="tituloListaModal"></h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="overflow-y: auto;">
+                    <div class="container">
+                        <div class="row g-1" id="contenidoListaJuego">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+</body>
+
+</html>
