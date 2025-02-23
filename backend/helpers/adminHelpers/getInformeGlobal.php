@@ -40,7 +40,7 @@ try {
 
 
     // Consulta 3: Obtener todos las reseñas relacionadas con cada usuario
-    $resenasQuery = "SELECT u.nombre_usuario, u.avatar, r.id_resena, r.img_juego, r.contenido, r.fecha_publicacion FROM usuarios u, resenas r WHERE u.id_usuario = r.id_usuario";
+    $resenasQuery = "SELECT u.nombre_usuario, u.avatar, r.id_resena, r.id_videojuego_api , r.img_juego, r.contenido, r.fecha_publicacion FROM usuarios u, resenas r WHERE u.id_usuario = r.id_usuario";
     $resenasStmt = $conexion->prepare($resenasQuery);
     $resenasStmt->execute();
     $resenasResult = $resenasStmt->get_result();
