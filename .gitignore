@@ -2,6 +2,3 @@ db/mysql.sock
 db/*.sock
 db/*.pid
 db/*.log
-node_modules/
-vendor/
-.env
