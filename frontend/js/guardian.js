@@ -22,7 +22,6 @@ async function obtenerSesion() {
 // Función para iniciar la aplicación solo cuando la sesión esté lista
 export async function iniciarGuardian() {
     await obtenerSesion(); // Esperamos a que la sesión se obtenga antes de continuar
-
     if (sessionData.error === "Sesion no valida") {
         windows.location.href = "/Acceso/login/login.html";
         eliminarDatosStorage();
@@ -33,6 +32,7 @@ export async function iniciarGuardian() {
     } else if (sessionData.success) {
         const { usuario } = sessionData.exito;
         localStorage.removeItem('logout');
+        
         localStorage.setItem("usuarioData", JSON.stringify(usuario));
         const usuarioData = JSON.parse(localStorage.getItem("usuarioData"));
         if (window.location.pathname === '/Perfiles/administrador/administrador.html') {
@@ -97,7 +97,7 @@ function usuarioNoConectadoEscritorio() {
 
 }
 function usuarioConectadoMovil(avatar, usuarioData) {
-    avatar = avatar === null ? '/img/avatares/sinAvatar.png' : avatar;
+    avatar = avatar === null ? '/img/avatares/sinAvatar.png' : avatar + `?v=${new Date().getTime()}`;
     const divHeaderMoviles = document.getElementById('headerMoviles');
     const navItem = document.createElement('div');
     navItem.classList.add('nav-item', 'dropdown', 'd-block', 'd-xl-none', 'mx-auto', 'text-center');
@@ -167,7 +167,7 @@ function usuarioConectadoMovil(avatar, usuarioData) {
 }
 
 function usuarioConectadoEscritorio(avatar, usuarioData) {
-    avatar = avatar === null ? '/img/avatares/sinAvatar.png' : avatar;
+    avatar = avatar === null ? '/img/avatares/sinAvatar.png' : avatar + `?v=${new Date().getTime()}`;
     const divHeaderEscritorio = document.getElementById('headerEscritorio');
 
     const navItem = document.createElement('div');
@@ -304,14 +304,14 @@ export async function guardarCambiosStorage(usuario) {
 }
 
 function movilAdministrador(usuario) {
-    document.getElementById('avatarMovil').src = usuario["avatar"];
+    document.getElementById('avatarMovil').src = usuario["avatar"] + `?v=${new Date().getTime()}`;
     document.getElementById('nombreMovil').textContent = usuario["nombre"];
 
 
 
 }
 function escritorioAdministrador(usuario) {
-    document.getElementById('avatarEscriorio').src = usuario["avatar"];
+    document.getElementById('avatarEscriorio').src = usuario["avatar"] + `?v=${new Date().getTime()}`;
     document.getElementById('nombreEscritorio').textContent = usuario["nombre"];
 
     /*Son del hombre pero para no alargar mas codigo lo pongo aqui */

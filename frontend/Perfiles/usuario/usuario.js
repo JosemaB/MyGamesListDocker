@@ -27,7 +27,6 @@ async function iniciarUsuario() {
         const listasDeJuegos = await obtenerListas(datosUsuario);
         const obtenerListResenas = await obtenerResenasUsuario(idUsuario);
         const relaciones = await obtenerRelaciones(idUsuario);
-        console.log(relaciones);
 
         if (usuarioSession && usuarioSession.id !== idUsuario) {
             const isSeguimiento = await estadoSeguimiento(usuarioSession.id, idUsuario);
