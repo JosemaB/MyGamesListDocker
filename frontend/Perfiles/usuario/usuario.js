@@ -48,7 +48,7 @@ async function iniciarUsuario() {
             const { nombre_usuario, fecha_registro, avatar, sobremi, steam, youtube, discord } = datosUsuario.contenidoUsuario;
             document.getElementById('nombreUsuario').innerText = nombre_usuario;
             document.getElementById('registro').innerText = `Miembro desde: ${formatDate(fecha_registro)}`;
-            document.getElementById('imgUsuario').src = (avatar === null ? '/img/avatares/sinAvatar.png' : avatar);  //Por si el avatar es null
+            document.getElementById('imgUsuario').src = (avatar === null ? '/img/avatares/sinAvatar.png' : avatar + `?v=${new Date().getTime()}`);  //Por si el avatar es null
 
             /*Si existe sobre mi, agregamos su card */
             if (sobremi) {
@@ -542,7 +542,7 @@ async function iniciarUsuario() {
                         userDiv.className = 'd-flex align-items-center';
 
                         const userImg = document.createElement('img');
-                        userImg.src = resena["avatar"];
+                        userImg.src = resena["avatar"] + `?v=${new Date().getTime()}`;
                         userImg.className = 'img-fluid rounded-start perfil-img';
                         userImg.alt = `Imagen de ${resena["nombre_usuario"]}`;
 
@@ -671,7 +671,7 @@ async function iniciarUsuario() {
                             divCardBody.classList.add('card-body');
 
                             const imgAvatar = document.createElement('img');
-                            imgAvatar.src = seguidor["avatar"];
+                            imgAvatar.src = seguidor["avatar"] + `?v=${new Date().getTime()}`;
                             imgAvatar.classList.add('rounded-circle', 'mb-2');
                             imgAvatar.alt = `Imagen de ${seguidor["nombre_usuario"]}`;
 
@@ -736,7 +736,7 @@ async function iniciarUsuario() {
                             divCardBody.classList.add('card-body');
 
                             const imgAvatar = document.createElement('img');
-                            imgAvatar.src = siguiendo["avatar"];
+                            imgAvatar.src = siguiendo["avatar"] + `?v=${new Date().getTime()}`;
                             imgAvatar.classList.add('rounded-circle', 'mb-2');
                             imgAvatar.alt = `Imagen de ${siguiendo["nombre_usuario"]}`;
 

@@ -13,5 +13,4 @@ test/PHPMailerTest.php*nonexistent_file.txt
 test/*/PHPMailerTest.php*nonexistent_file.txt
 phpunit.xml
 /.phpunit.result.cache
-vendor/
-!vendor/phpmailer/
+db/ibdata1
