@@ -7,5 +7,10 @@ ejecuta el siguiente comando en la terminal:
 
 Este comando descargará e instalará todas las dependencias necesarias.
 
+Para acceder al panel de administración, utiliza las siguientes credenciales:
+
+    Correo: admin@gmail.com  
+    Contraseña: Mygameslist2425!
+
 ¡Gracias y que disfrutes de la aplicación!
 =========================================================

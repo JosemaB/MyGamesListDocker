@@ -49,10 +49,63 @@
   }
 }
 
+/* Aplicar efectos solo en tabletas y escritorio */
+@media (min-width: 768px) {
+  .hover-card:hover .card-title {
+    text-overflow: unset;
+    white-space: normal;
+    overflow: visible;
+  }
+
+  .hover-card:hover .extra-content {
+    opacity: 1;
+    max-height: 200px;
+    background-color: #1A233A;
+    z-index: 1;
+    border-radius: 8px;
+    display: block;
+  }
+
+  .hover-card:hover {
+    transform: scale(1.1);
+    z-index: 1;
+    transition: transform 0.3s ease-in;
+    background-color: transparent;
+  }
+
+  .hover-card:hover .containerCardTest {
+    position: absolute;
+    width: 100%;
+    background-color: #1A233A;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .hover-card {
+    position: relative;
+  }
+}
+
 /* Media Query para móviles pequeños (menos de 768px) */
 @media (max-width: 768px) {
   .imgForm {
     object-fit: cover;
+  }
+
+  .hover-card:hover {
+    all: unset;
+  }
+
+  .hover-card .extra-content {
+    display: none;
+  }
+
+  /* Asegurar que extra-content siempre esté oculto en móviles */
+  .extra-content {
+    display: none !important;
+    opacity: 0 !important;
+    max-height: 0 !important;
+    visibility: hidden !important;
   }
 
   #resultadosForm .card-title {
@@ -508,23 +561,6 @@ body {
   display: none;
 }
 
-.hover-card:hover .card-title {
-  text-overflow: unset;
-  white-space: normal;
-  overflow: visible;
-
-}
-
-/* Mostrar el contenido adicional al hacer hover */
-.hover-card:hover .extra-content {
-  opacity: 1;
-  max-height: 200px;
-  background-color: #1A233A;
-  z-index: 1;
-  border-radius: 8px;
-  display: block;
-
-}
 
 .list-group-item {
   /* Alinea el texto a la izquierda */
@@ -545,29 +581,7 @@ body {
   /* Para bordes nítidos */
 }
 
-.hover-card:hover {
-  transform: scale(1.1);
-  /* Aumenta el tamaño */
-  z-index: 1;
-  transition: transform 0.3s ease-in;
-  background-color: transparent;
-}
 
-.hover-card:hover .containerCardTest {
-  position: absolute;
-  width: 100%;
-  background-color: #1A233A;
-  /* Fondo de la tarjeta */
-  border-radius: 8px;
-  /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  /* Sombra suave */
-
-}
-
-.hover-card {
-  position: relative;
-}
 
 .zindex-0 {
   z-index: 0;

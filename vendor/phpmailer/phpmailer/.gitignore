@@ -3,6 +3,7 @@ docs/*
 test/message.txt
 test/testbootstrap.php
 build/
+vendor/
 *.pem
 composer.lock
 .phpcs.xml
@@ -13,4 +14,3 @@ test/PHPMailerTest.php*nonexistent_file.txt
 test/*/PHPMailerTest.php*nonexistent_file.txt
 phpunit.xml
 /.phpunit.result.cache
-db/ibdata1
