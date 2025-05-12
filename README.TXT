@@ -1,4 +1,10 @@
 =========================================================
+## Iniciar la aplicación
+
+Para levantar el entorno con Docker, ejecuta el siguiente comando:
+
+docker-compose up --build -d
+
 ¡ATENCIÓN! La carpeta 'vendor' (Completa) no ha sido subida a Git.
 Para que la aplicación funcione correctamente, por favor
 ejecuta el siguiente comando en la terminal:
