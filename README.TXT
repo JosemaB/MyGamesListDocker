@@ -1,9 +1,10 @@
 =========================================================
 ## Iniciar la aplicación
 
-Para levantar el entorno con Docker, ejecuta el siguiente comando:
-
+Para levantar el entorno con Docker, ejecuta el siguiente comando en la terminal:
 docker-compose up --build -d
+
+Accede a la página web en: http://localhost:5500
 
 ¡ATENCIÓN! La carpeta 'vendor' (Completa) no ha sido subida a Git.
 Para que la aplicación funcione correctamente, por favor
