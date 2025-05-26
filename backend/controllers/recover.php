@@ -38,7 +38,7 @@ try {
                     $mail->Host = 'smtp.gmail.com';
                     $mail->SMTPAuth = true;
                     $mail->Username = 'jmabenavides25@gmail.com';  // Cambia esto con tu correo
-                    $mail->Password = 'geze jlgl xhmz lkuw';  // Usa un token si tienes 2FA activado
+                    $mail->Password = 'tpxk zark ckpv vbgx';  // Usa un token si tienes 2FA activado
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                     $mail->Port = 587;
 
