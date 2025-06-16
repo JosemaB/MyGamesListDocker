@@ -1,57 +1,58 @@
 <?php
-include_once '../config/ConexionBdd.php';  //Para la conexion de la base de datos MyGamesList
-include_once '../config/cors.php';  // Incluye CORS para poder hacer la conexion con mi frontend
-include_once '../helpers/funciones.php';
-include_once './iniciar_sesion.php';
 
+// Incluir archivos necesarios
+include_once '../config/ConexionBdd.php';  // Conexión a la base de datos
+include_once '../config/cors.php';         // CORS para permitir conexión con frontend
+include_once '../helpers/funciones.php';   // Funciones auxiliares
+include_once './iniciar_sesion.php';       // Manejo de sesión
 
 try {
-    // Obtener los datos enviados en formato JSON
+    // Obtener datos JSON enviados desde el frontend
     $datos = json_decode(file_get_contents('php://input'), true);
-    if ($datos) {
 
+    if ($datos && isset($datos['email'], $datos['password'])) {
         $email = validarCadena($datos['email']);
-        //Creamos la conexion ya con los campos validados
+        $password = $datos['password'];
+
+        // Conectarse a la base de datos
         $baseDeDatos = new ConexionBdd();
         $conexion = $baseDeDatos->getConnection();
 
-        //Aqui se comprueba si el usuario existe
-        $consultaUsuario = $conexion->prepare("select contrasena, metodo_registro from usuarios where email = ?");
+        // Verificar si el usuario existe
+        $consultaUsuario = $conexion->prepare("SELECT contrasena, metodo_registro FROM usuarios WHERE email = ?");
         $consultaUsuario->bind_param("s", $email);
         $consultaUsuario->execute();
-        $usuarioExiste = $consultaUsuario->get_result();
-        $usuarioResultado = $usuarioExiste->fetch_assoc();
+        $resultado = $consultaUsuario->get_result();
+        $usuario = $resultado->fetch_assoc();
 
-        if ($usuarioResultado["metodo_registro"] === 'google') {
-            $error = 'El correo que estás ingresando está vinculado con Google. Por favor, inicia sesión con tu cuenta de Google';
-        } else if ($usuarioExiste->num_rows !== 0) {
-            if (password_verify($datos['password'], $usuarioResultado["contrasena"])) {
-
-                //Creamos la sesion y la cookie
+        if ($usuario) {
+            if ($usuario["metodo_registro"] === 'google') {
+                $error = 'El correo que estás ingresando está vinculado con Google. Por favor, inicia sesión con tu cuenta de Google.';
+            } elseif (password_verify($password, $usuario["contrasena"])) {
+                // Iniciar sesión correctamente
                 iniciarSesion($email);
-                $exito = "Usuario dentro de la sesion";
-
+                $exito = "Inicio de sesión exitoso";
             } else {
-                $error = 'Correo electrónico o Contraseña incorrectos';
+                $error = 'Correo electrónico o contraseña incorrectos.';
             }
         } else {
-            //Para mandar un mensaje mas correcto
-            $error = "El correo electrónico ingresado no está asociado a ninguna cuenta, regístrate para acceder";
+            $error = "El correo electrónico ingresado no está asociado a ninguna cuenta. Regístrate para acceder.";
         }
-        //Cerramos la conexion
+
+        // Cerrar conexión
         $baseDeDatos->closeConnection();
     } else {
-        $error = "Datos no encontrados";
+        $error = "Datos incompletos o mal enviados.";
     }
 } catch (Exception $ex) {
     $error = $ex->getMessage();
 }
 
-// Si hay error, los devolvemos como JSON y detenemos la ejecución
+// Devolver respuesta JSON
 if (isset($error)) {
     echo json_encode(["success" => false, "error" => $error]);
 } else if (isset($exito)) {
-    // Si todo está bien, continuamos con el registro
     echo json_encode(["success" => true, "exito" => $exito]);
 }
+
 exit();
